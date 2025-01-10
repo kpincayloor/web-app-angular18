@@ -1,0 +1,78 @@
+<div class="min-h-screen bg-cover bg-center flex items-center justify-center"
+     style="background-image: url('https://source.unsplash.com/1600x900/?technology');">
+  <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full space-y-6">
+    <h2 class="text-2xl font-bold text-center">Registro</h2>
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+      <div class="space-y-4">
+        <div>
+          <label for="nombres" class="text-gray-700">Nombres</label>
+          <input formControlName="nombres" id="nombres" type="text"
+                 class="mt-1 w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" required>
+          <div *ngIf="registerForm.get('nombres')?.invalid && registerForm.get('nombres')?.touched" class="text-red-500 text-sm mt-1">
+            {{ getErrorMessage('nombres') }}
+          </div>
+        </div>
+        <div>
+          <label for="apellidos" class="text-gray-700">Apellidos</label>
+          <input formControlName="apellidos" id="apellidos" type="text"
+                 class="mt-1 w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" required>
+          <div *ngIf="registerForm.get('apellidos')?.invalid && registerForm.get('apellidos')?.touched" class="text-red-500 text-sm mt-1">
+            {{ getErrorMessage('apellidos') }}
+          </div>
+        </div>
+        <div>
+          <label for="numeroIdentificacion" class="text-gray-700">Número de Identificación</label>
+          <input formControlName="numeroIdentificacion" id="numeroIdentificacion" type="text"
+                 class="mt-1 w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" required pattern="^\d+$">
+          <div *ngIf="registerForm.get('numeroIdentificacion')?.invalid && registerForm.get('numeroIdentificacion')?.touched" class="text-red-500 text-sm mt-1">
+            {{ getErrorMessage('numeroIdentificacion') }}
+          </div>
+        </div>
+        <div>
+          <label for="email" class="text-gray-700">Email</label>
+          <input formControlName="email" id="email" type="email"
+                 class="mt-1 w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" required>
+          <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-red-500 text-sm mt-1">
+            {{ getErrorMessage('email') }}
+          </div>
+        </div>
+        <div>
+          <label for="tipoIdentificacion" class="text-gray-700">Tipo de Identificación</label>
+          <select formControlName="tipoIdentificacion" id="tipoIdentificacion"
+                  class="mt-1 w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" required>
+            <option value="">Seleccionar</option>
+            <option value="Cédula">Cédula</option>
+            <option value="Pasaporte">Pasaporte</option>
+            <option value="Otro">Otro</option>
+          </select>
+          <div *ngIf="registerForm.get('tipoIdentificacion')?.invalid && registerForm.get('tipoIdentificacion')?.touched" class="text-red-500 text-sm mt-1">
+            {{ getErrorMessage('tipoIdentificacion') }}
+          </div>
+        </div>
+        <div>
+          <label for="user" class="text-gray-700">Usuario</label>
+          <input formControlName="user" id="user" type="text"
+                 class="mt-1 w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" required>
+          <div *ngIf="registerForm.get('user')?.invalid && registerForm.get('user')?.touched" class="text-red-500 text-sm mt-1">
+            {{ getErrorMessage('user') }}
+          </div>
+        </div>
+        <div>
+          <label for="pass" class="text-gray-700">Contraseña</label>
+          <input formControlName="pass" id="pass" type="password"
+                 class="mt-1 w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" required>
+          <div *ngIf="registerForm.get('pass')?.invalid && registerForm.get('pass')?.touched" class="text-red-500 text-sm mt-1">
+            {{ getErrorMessage('pass') }}
+          </div>
+        </div>
+      </div>
+      <button type="submit"
+              class="w-full mt-6 bg-indigo-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-600">
+        Registrar
+      </button>
+      <div *ngIf="registrationError" class="text-red-500 text-center mt-4">
+        Error en el registro
+      </div>
+    </form>
+  </div>
+</div>

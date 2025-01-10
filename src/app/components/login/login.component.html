@@ -1,0 +1,33 @@
+<div class="min-h-screen bg-cover bg-center flex items-center justify-center"
+     style="background-image: url('https://source.unsplash.com/1600x900/?restaurant');">
+  <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full space-y-6">
+    <h2 class="text-2xl font-bold text-center">Iniciar Sesión</h2>
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+      <div class="space-y-4">
+        <div>
+          <label for="usuario" class="text-gray-700">Usuario</label>
+          <input formControlName="usuario" id="usuario" type="usuario"
+                 class="mt-1 w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" required>
+          <div *ngIf="loginForm.get('usuario')?.invalid && loginForm.get('usuario')?.touched" class="text-red-500 text-sm mt-1">
+            {{ getErrorMessage('usuario') }}
+          </div>
+        </div>
+        <div>
+          <label for="password" class="text-gray-700">Contraseña</label>
+          <input formControlName="password" id="password" type="password"
+                 class="mt-1 w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" required>
+          <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-red-500 text-sm mt-1">
+            {{ getErrorMessage('password') }}
+          </div>
+        </div>
+      </div>
+      <button type="submit"
+              class="w-full mt-6 bg-indigo-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-600">
+        Ingresar
+      </button>
+      <div *ngIf="credentialsInvalid" class="text-red-500 text-center mt-4">
+        Credenciales inválidas
+      </div>
+    </form>
+  </div>
+</div>
